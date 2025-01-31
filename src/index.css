@@ -40,12 +40,8 @@ body {
 }
 
 .app {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   height: 100%; 
-  overflow-y: scroll;
+  overflow: hidden;
   background-image: var(--background-image);
   background-repeat: no-repeat;
   background-size: cover;
@@ -73,6 +69,7 @@ body {
 }
 
 .input-wrapper {
+  display: contents;
   height: 125px;
   position: relative;
   margin-bottom: 2px;
@@ -81,16 +78,19 @@ body {
   -webkit-transition: var(--input-wrapper-transition);
 }
 
+.form-block--is-register {
+  height: auto;
+}
+
 .form-block--is-register .input-wrapper {
-  height: 255px;
+  height: auto;
   transition: var(--register-block-transition);
   -moz-transition: var(--register-block-transition);
   -webkit-transition: var(--register-block-transition);
 }
 
-.form-group--signup {
-  position: absolute;
-  top: 0;
+.form-group--register {
+  position: relative;
   left: 150%;
   width: 100%;
 }
@@ -114,16 +114,27 @@ body {
   background: transparent;
 }
 
-.form-block--is-register .input-text-field {
+.error-message {
+  font-size: 13px;
+  color: maroon;
+  position: relative;
+  font-weight: 800;
+  margin-top: -8px;
+  margin-bottom: 5px;
+}
+
+.hide-content {
+  display: table-column;
+}
+
+.form-block--is-register .input-text-field, .form-block--is-register .error-message {
   transform: translateX(-150%);
 }
 
-.form-group--login .input-text-field {
-  opacity: 1;
-}
-
-.form-block--is-register .form-group--login .input-text-field {
+.form-block--is-register .form-group--login .input-text-field,
+.form-block--is-register .form-group--login .error-message {
   opacity: 0;
+  display: hidden;
 }
 
 .form-group--register .input-text-field {
@@ -170,16 +181,11 @@ body {
                       var(--input-field-transition);
 }
 
-.form-group--register {
-  position: absolute;
-  top: 0;
-  left: 150%;
-  width: 100%;
-}
-
 .form-block {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  margin: 17% auto 0;
+  margin: 17% auto;
   width: 285px;
   padding: 25px;
   background: rgba(255,255,255,0.15);

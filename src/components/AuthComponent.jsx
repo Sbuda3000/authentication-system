@@ -10,7 +10,7 @@ const AuthComponent = ({ mode: initialMode }) => {
     };
 
     return (
-        <div>
+        <main>
             <div className={`wrapper wrapper--is-${mode}`}></div>
             <section className={`form-block form-block--is-${mode}`}>
                 <header className="header">
@@ -30,7 +30,7 @@ const AuthComponent = ({ mode: initialMode }) => {
 
                 <LoginForm mode={mode} />
             </section>
-        </div>
+        </main>
     );
 }
 
